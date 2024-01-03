@@ -1,0 +1,22 @@
+﻿// Pages/Api/VideoEditingTaskController.cs
+using Microsoft.AspNetCore.Mvc;
+using YourNamespace.Services; // Replace with the correct namespace
+
+[Route("api/[controller]")]
+[ApiController]
+public class VideoEditingTaskController : ControllerBase
+{
+    private readonly VideoEditingTaskService _taskService;
+
+    public VideoEditingTaskController(VideoEditingTaskService taskService)
+    {
+        _taskService = taskService;
+    }
+
+    [HttpGet]
+    public IActionResult Get()
+    {
+        var tasks = _taskService.GetVideoEditingTasks();
+        return Ok(tasks);
+    }
+}
